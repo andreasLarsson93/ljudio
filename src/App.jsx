@@ -21,9 +21,7 @@ function App() {
       <div>
         <nav>
           <Link to="/">Home</Link>
-        
         </nav>
-
         <Switch>
           <Route exact path="/">
             

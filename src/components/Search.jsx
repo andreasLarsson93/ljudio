@@ -11,7 +11,8 @@ function Search() {
     const [songsArray, updateSongsArray] = useState([])
     const [artistsArray, updateArtistArray] = useState([])
     const [albumsArray, updateAlbumsArray] = useState([])
-  
+    const [playListsArray, updatePlayListsArray] = useState([])
+    
 
 
 
@@ -24,8 +25,16 @@ function Search() {
         let songsArray = []
         let artistsArray = []
         let albumsArray = []
+        let playListsArray=[]
+        const playListApiSearch = "https://yt-music-api.herokuapp.com/api/yt/playlists/" + searchInput;
+        const playListResp = await fetch(playListApiSearch)
+        const playListResults = await playListResp.json()
         
         
+        for(let playList of playListResults.content){
+            playListsArray.push(playList)
+
+        }
         
 
         for (let item of results.content) {
@@ -45,8 +54,10 @@ function Search() {
         updateSongsArray(songsArray)
         updateArtistArray(artistsArray)
         updateAlbumsArray(albumsArray)
+        updatePlayListsArray(playListsArray)
         
-    
+        
+        
     }
     
 
@@ -62,15 +73,15 @@ function Search() {
             </div>
             <div className="all-container">
                 <div>
-                    <Songs songsArray={songsArray} />
+                    <Songs songsArray = {songsArray} playListsArray = {playListsArray}/>
                 </div>
                 <div>
-                    <Artist artistsArray={artistsArray} />
+                    <Artist artistsArray = {artistsArray}/>
                 </div>
                 <div>
-                    <Albums albumsArray={albumsArray} />
+                    <Albums albumsArray = {albumsArray}/>
                 </div>
-               
+             
                 
                 
             </div>
