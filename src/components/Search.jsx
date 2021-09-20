@@ -12,23 +12,29 @@ function Search() {
     const [artistsArray, updateArtistArray] = useState([])
     const [albumsArray, updateAlbumsArray] = useState([])
     const [playListsArray, updatePlayListsArray] = useState([])
+    const [showResults, setShowResults] = useState(false)
     
 
 
 
 
     const searchMusic = async () => {
-
+        //All search
         const apiSearch = "https://yt-music-api.herokuapp.com/api/yt/search/" + searchInput;
         const resp = await fetch(apiSearch)
         const results = await resp.json()
+        //PlayList Search
+        const playListApiSearch = "https://yt-music-api.herokuapp.com/api/yt/playlists/" + searchInput;
+        const playListResp = await fetch(playListApiSearch)
+        const playListResults = await playListResp.json()
+       //Artist Search
+        const albumSearch = "https://yt-music-api.herokuapp.com/api/yt/playlists/" + searchInput;
+        const albumSearchResponse = await fetch(albumSearch)
+        const albumSearchResults = await albumSearchResponse.json()
         let songsArray = []
         let artistsArray = []
         let albumsArray = []
         let playListsArray=[]
-        const playListApiSearch = "https://yt-music-api.herokuapp.com/api/yt/playlists/" + searchInput;
-        const playListResp = await fetch(playListApiSearch)
-        const playListResults = await playListResp.json()
         
         
         for(let playList of playListResults.content){
@@ -55,8 +61,16 @@ function Search() {
         updateArtistArray(artistsArray)
         updateAlbumsArray(albumsArray)
         updatePlayListsArray(playListsArray)
+       /*  function goToSongs() {
+            history.push({
+                pathname: '/songs/' + propsSearchTerm,
+                state: {
+                    searchTerm: propsSearchTerm,
+                }
+            })
+        } */
         
-        
+        setShowResults(true)
         
     }
     
@@ -71,19 +85,20 @@ function Search() {
                 </form>
 
             </div>
-            <div className="all-container">
-                <div>
+            <div className="all-container" style={{display: showResults ? 'flex':'none'}}>
+                <div> 
                     <Songs songsArray = {songsArray} playListsArray = {playListsArray}/>
+
                 </div>
                 <div>
                     <Artist artistsArray = {artistsArray}/>
+
                 </div>
                 <div>
                     <Albums albumsArray = {albumsArray}/>
+
                 </div>
-             
-                
-                
+               
             </div>
         </div>
 

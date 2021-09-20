@@ -18,9 +18,8 @@ class Player extends React.Component {
   }
   
   render() {
-   
+   console.log(this.props.browseId)
     
-
     const opts = {
       height: '0',
       width: '0',
@@ -30,7 +29,6 @@ class Player extends React.Component {
         list:this.props.browseId
 
       },
-      
     };
    
     return (

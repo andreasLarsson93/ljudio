@@ -6,9 +6,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import HomePage from './components/HomePage';
-
 import Search from './components/Search';
+import Songs from './components/Songs';
 
 
 
@@ -20,14 +19,15 @@ function App() {
     <Router>
       <div>
         <nav>
-          <Link to="/">Home</Link>
+         
+          <Link to ="/search"> Find fun music!</Link>
         </nav>
         <Switch>
-          <Route exact path="/">
-            
-            <h1>Ljudio home page</h1>
+            <Route exact path="/search">
             <Search/>
           </Route>
+          <Route exact path="/songs/:searchTerm" component={Songs}></Route>
+         
         </Switch>
       </div>
     </Router>
