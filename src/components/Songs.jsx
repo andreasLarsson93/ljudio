@@ -42,7 +42,7 @@ function Songs(props) {
         <div>
             <h2>Songs</h2>
             <Player videoId={value} browseId={playListValue} />
-            {props.songsArray.map(song => <p key={song.name}>
+            {props.songsArray.map(song => <p key={song.videoId}>
 
                 {song.name}
                 <button value={song.videoId} onClick={(e) => playMusic(e.target)}>play</button>
@@ -55,7 +55,7 @@ function Songs(props) {
 
                 {playList.title}
 
-            </button> )}
+            </button>)}
                 </div>
         </div>
     </>

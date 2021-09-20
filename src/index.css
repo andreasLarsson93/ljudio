@@ -2,3 +2,22 @@
   display: flex;
  justify-content: space-between;
 }
+/* body{
+  background-color: rgb(16, 16, 16);
+  color: white;
+} */
+button{
+  border: none;
+  outline: none;
+  background-color: green;
+  border-radius: 5px;
+  box-shadow: inset 3px 3px 5px rgba(255, 255, 255, .4);
+  transition: all .1s;
+}
+button:hover{
+  filter:brightness(120%)saturate(80%)
+
+}
+button:active{
+  background-color: red;
+}

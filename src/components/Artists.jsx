@@ -1,19 +1,60 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
 
-function Artists(props){
 
 
-    return<>
+function Artists(props) {
 
-        <h2>Artists</h2>
-        {props.artistsArray.map(artist => <p key={artist.name}>
-            
-                 {artist.name}
-           
-        </p>)}
+
+    let match = props.match
+    console.log(match.params)
+    let params = match.params
+    console.log(match.params.searchTerm) 
+
+
+    const [allArtistsList, updateAllArtistsList] = useState([])
+
+
+    const getAllArtists = async () => {
+
+        try {
+
+            const allArtistsApiSearch = "https://yt-music-api.herokuapp.com/api/yt/artists/" + params.searchTerm;
+            const allArtistsResp = await fetch(allArtistsApiSearch)
+            const allArtistsResult = await allArtistsResp.json()
+
+            for (let item of allArtistsResult.content) {
+                allArtistsList.push(item)
+
+            }
+
+        }
+        catch (e) {
+            console.error(e)
+        }
+        updateAllArtistsList(allArtistsList)
+        console.log(allArtistsList)
+
+    }
+    useEffect(() => {
+        getAllArtists()
+    },[])
+
+    return (<>
+        <h1>All artists</h1>
+        <div>
+
+                {allArtistsList.map((artists, index)=><ul> 
+                            <li key={index}>
+                                <p>{artists.name}</p> 
+                            
+                                </li>
+                            </ul> )}
+
+                        </div>
     </>
-}
+               
+)}
 
 
 export default Artists
