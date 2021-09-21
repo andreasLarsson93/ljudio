@@ -15,12 +15,10 @@ function Search() {
     const [albumsArray, updateAlbumsArray] = useState([])
     const [playListsArray, updatePlayListsArray] = useState([])
     const [showResults, setShowResults] = useState(false)
+    
     const history = useHistory();
 
-
-
-
-
+  
     const searchMusic = async () => {
         //All search
         const apiSearch = "https://yt-music-api.herokuapp.com/api/yt/search/" + searchInput;
@@ -97,12 +95,16 @@ function Search() {
 
         })
     }
+    function copyLinkUrL(){
+        navigator.clipboard.writeText(window.location.href)
+    }
+    
   
 
 
     return (
         <div>
-
+        
             <div className="search-container">
                 <form onSubmit={event => event.preventDefault()}>
                     <input placeholder="search" onChange={event => updateSearchInput(event.target.value)} />
@@ -111,21 +113,25 @@ function Search() {
 
             </div>
             <div className="all-container" style={{ display: showResults ? 'flex' : 'none' }}>
-                <div>
+                <div className="direction-buttons-container">
+
                     <button onClick={goToAllSongsComponent}>go to allSongs </button>
-                    <Songs songsArray={songsArray} playListsArray={playListsArray} albumsArray={albumsArray} artistsArray={artistsArray}/>
                     <button onClick={goToPlayListsComponent} >go to playlists</button>
+                    <button onClick={goToArtistsComponent} >go to Artists</button>
+                    <button onClick={copyLinkUrL}>copy</button>
+
+                </div>
+                <div>
+                    <Songs songsArray={songsArray} playListsArray={playListsArray} albumsArray={albumsArray} artistsArray={artistsArray}/>
 
                 </div>
                 <div>
                   
-                    <button onClick={goToArtistsComponent} >go to Artists</button>
-
                 </div>
-                <div>
-                    <Albums albumsArray={albumsArray} />
+                
 
-                </div>
+
+           
 
             </div>
         </div>

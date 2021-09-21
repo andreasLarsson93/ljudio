@@ -51,19 +51,28 @@ function PlayLists(props) {
         })
         
     }
+    function copyLinkUrL(){
+        navigator.clipboard.writeText(window.location.href)
+    }
+    
+  
     
 
     return (
     
         <div>
+            <div className="title-copy">
 
-            <ul > 
+            <h1>All playlists</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
+            </div>
             {playListsArray.map((playList, index)=>
             <button value={playList.browseId} onClick={(e) => goToChosePlayList(e.target)} key={index}>
                         {playList.title}
             </button>
             )}
-            </ul> 
+            <div>
+            
+            </div>
         </div>
         
     )

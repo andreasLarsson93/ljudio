@@ -19,41 +19,50 @@ function Songs(props) {
         let result =element.value.slice(2)
         
         setPlayListValue(result)
-       // getSongsInPlayList(result)
+       
     }
-
-    // Ifall man måste ha länkarna i playlisten
-     const getSongsInPlayList= async(result)=>{
-        const getSongsInPlayList = "https://yt-music-api.herokuapp.com/api/yt/playlist/" + result;
-        const getSongsInPlayListResults = await fetch(getSongsInPlayList)
-        const playListResults = await getSongsInPlayListResults.json()
-        console.log(playListResults.content)
-
-    } 
 
     const playMusic = (element) => {
         setValue(element.value)
-        getSongsInPlayList()
         
     }
+   
+  
 
 
     return <>
         <div>
             <h2>Songs</h2>
-            <Player videoId={value} browseId={playListValue} />
+            <h3>Listen to some samples</h3>
             {props.songsArray.map(song => <p key={song.videoId}>
-
-                {song.name}
-                <button value={song.videoId} onClick={(e) => playMusic(e.target)}>play</button>
+                <button value={song.videoId} onClick={(e) => playMusic(e.target)}>{song.name}</button>
             </p>)}
+
             <div>
+            <Player videoId={value} browseId={playListValue} />
 
             <h2>Play Lists</h2>
+            <h3>Listen to some play lists</h3>
             {props.playListsArray.slice(0,3).map(playList => <button key={playList.browseId} 
             value={playList.browseId} onClick={(e) => startPlayList(e.target)}>
 
                 {playList.title}
+
+            </button>)}
+                </div>
+                <div>
+                    <h2>Artists</h2>
+                    {props.artistsArray.slice(0,3).map(artist => <button key={artist.browseId}>
+
+                {artist.name}
+
+            </button>)}
+                </div>
+                <div>
+                    <h2>Albums</h2>
+                    {props.albumsArray.slice(0,3).map(album => <button key={album.browseId}>
+
+                {album.name}
 
             </button>)}
                 </div>

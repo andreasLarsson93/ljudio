@@ -2,10 +2,10 @@
   display: flex;
  justify-content: space-between;
 }
-/* body{
+ body{
   background-color: rgb(16, 16, 16);
   color: white;
-} */
+} 
 button{
   border: none;
   outline: none;
@@ -21,3 +21,7 @@ button:hover{
 button:active{
   background-color: red;
 }
+/* .copy-buton{
+  
+
+} */

@@ -10,19 +10,21 @@ class Player extends React.Component {
   }
   onReady(event) {
     playState = event
+    
+  /*   playState.target.loadPlayList() */
     playState.target.playVideo()
   }
-  onPlayListReady(event){
+  
+  /* onPlayListReady(event){
     playState = event
-    playState.target.loadPlayList()
-  }
+  } */
   
   render() {
-   console.log(this.props.browseId)
+   
     
     const opts = {
-      height: '0',
-      width: '0',
+      height: '300',
+      width: '300',
       playerVars: {
         autoplay: 1,
         listType:'playlist',
@@ -39,7 +41,7 @@ class Player extends React.Component {
         </div>
         <div>
 
-       <Youtube onReady={this.onPlayListReady} opts={opts}/> 
+     {/*   <Youtube  onReady={this.onPlayListReady} opts={opts}/>  */}
         <button onClick={() => {playState.target.previousVideo()}}>previous</button>
         <button onClick={() => {playState.target.pauseVideo()}}>paus</button>
         <button onClick={() => {playState.target.playVideo()}}>play</button>

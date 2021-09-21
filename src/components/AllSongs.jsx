@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Player from "./Player";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -11,8 +12,11 @@ function AllSongs(props) {
     let params = match.params
 
 
+    const history = useHistory();
+
+
     const [allSongsList, updateAllSongsList] = useState([])
-    const [singleSong,updateSingleSong] = useState('')
+   
 
     let tempList = []
     const getAllSongsList = async () => {
@@ -33,27 +37,46 @@ function AllSongs(props) {
             console.error(e)
         }
         updateAllSongsList(tempList)
-        
+
     }
     useEffect(() => {
         getAllSongsList()
-    },[])
-    const playThisSong = (element) =>{
-        updateSingleSong(element.value)
+    }, [])
+    const goToThisSong = (element) => {
+        let searchTerm = element.value
+        history.push({
+            pathname: '/song/' + searchTerm,
+            state: {
+                searchTerm: searchTerm,
+            }
+
+        })
     }
 
+    function copyLinkUrL() {
+        navigator.clipboard.writeText(window.location.href)
+    }
+
+
+
     return (<>
-        <Player videoId={singleSong} />
-        <h1>All songs</h1>
+
+        <div className="title-copy">
+
+            <h1>All songs</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
+        </div>
+
         <div>
 
-        {allSongsList.map((song, index)=>
-            <button value={song.videoId} onClick={(e) => playThisSong(e.target)} key={index}>
-                        {song.name}
-            </button>
-            
-            )}
+            {allSongsList.map((song, index) =>
+                <button value={song.videoId}  onClick={(e) => goToThisSong(e.target)} key={index}>
+                
+                    {song.name}
+                </button>
 
+            )}
+            <div>
+            </div>
         </div>
     </>
 
