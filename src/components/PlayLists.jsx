@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from "react";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -6,14 +7,14 @@ import React, {useState,useEffect} from "react";
 
 function PlayLists(props) {
     
-    
     let match = props.match
     let params = match.params
-    console.log(params)
-
+   
+    
+    const history = useHistory();
     
     const [playListsArray,updatePlayListArray] = useState([])
-    
+    let tempList = []
     
     const getAllPlayLists = async()=>{
         
@@ -22,23 +23,34 @@ function PlayLists(props) {
             const playListApiSearch = "https://yt-music-api.herokuapp.com/api/yt/playlists/" + params.searchTerm;
             const playListResp = await fetch(playListApiSearch)
             const playListResults = await playListResp.json()
-            
+
             for(let item of playListResults.content){
-                playListsArray.push(item)
-                
+                tempList.push(item)
             }
             
         }
         catch(e){
             console.error(e)
         }
-        updatePlayListArray(playListsArray)
-        console.log(playListsArray)
+        console.log(tempList)
+        updatePlayListArray(tempList)
+        
         
     }
     useEffect( () => {
         getAllPlayLists()
     },[])
+    function goToChosePlayList(element) {
+       let searchTerm = element.value.slice(2)
+        history.push({
+            pathname: '/playlist/' + searchTerm,
+            state: {
+                searchTerm: searchTerm,
+            }
+
+        })
+        
+    }
     
 
     return (
@@ -47,7 +59,9 @@ function PlayLists(props) {
 
             <ul > 
             {playListsArray.map((playList, index)=>
-            <li key={index}> {playList.title} </li>
+            <button value={playList.browseId} onClick={(e) => goToChosePlayList(e.target)} key={index}>
+                        {playList.title}
+            </button>
             )}
             </ul> 
         </div>

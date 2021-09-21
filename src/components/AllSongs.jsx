@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Player from "./Player";
 
 
 
@@ -11,8 +12,9 @@ function AllSongs(props) {
 
 
     const [allSongsList, updateAllSongsList] = useState([])
+    const [singleSong,updateSingleSong] = useState('')
 
-
+    let tempList = []
     const getAllSongsList = async () => {
 
         try {
@@ -22,7 +24,7 @@ function AllSongs(props) {
             const allSongsListResults = await allSongsListResp.json()
 
             for (let item of allSongsListResults.content) {
-                allSongsList.push(item)
+                tempList.push(item)
 
             }
 
@@ -30,26 +32,27 @@ function AllSongs(props) {
         catch (e) {
             console.error(e)
         }
-        updateAllSongsList(allSongsList)
-        console.log(allSongsList)
-
+        updateAllSongsList(tempList)
+        
     }
     useEffect(() => {
         getAllSongsList()
-    })
+    },[])
+    const playThisSong = (element) =>{
+        updateSingleSong(element.value)
+    }
 
     return (<>
+        <Player videoId={singleSong} />
         <h1>All songs</h1>
         <div>
 
-            <ul>
-                {allSongsList.map((allsongs, index) =>
-                    <li key={index}>
-                        <p>{allsongs.name}</p>
-
-                    </li>
-                    )}
-            </ul>
+        {allSongsList.map((song, index)=>
+            <button value={song.videoId} onClick={(e) => playThisSong(e.target)} key={index}>
+                        {song.name}
+            </button>
+            
+            )}
 
         </div>
     </>

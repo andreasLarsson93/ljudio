@@ -74,8 +74,8 @@ function Search() {
             state: {
                 searchTerm: searchInput,
             }
-
         })
+        
     }
     function goToAllSongsComponent() {
 
@@ -113,12 +113,12 @@ function Search() {
             <div className="all-container" style={{ display: showResults ? 'flex' : 'none' }}>
                 <div>
                     <button onClick={goToAllSongsComponent}>go to allSongs </button>
-                    <Songs songsArray={songsArray} playListsArray={playListsArray} />
+                    <Songs songsArray={songsArray} playListsArray={playListsArray} albumsArray={albumsArray} artistsArray={artistsArray}/>
                     <button onClick={goToPlayListsComponent} >go to playlists</button>
 
                 </div>
                 <div>
-                    <Artist artistsArray={artistsArray} />
+                  
                     <button onClick={goToArtistsComponent} >go to Artists</button>
 
                 </div>

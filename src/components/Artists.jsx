@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 
 function Artists(props) {
 
-
+    
     let match = props.match
     console.log(match.params)
     let params = match.params
@@ -13,18 +13,18 @@ function Artists(props) {
 
 
     const [allArtistsList, updateAllArtistsList] = useState([])
-
-
+    
+    let tempList =[]
     const getAllArtists = async () => {
 
         try {
 
-            const allArtistsApiSearch = "https://yt-music-api.herokuapp.com/api/yt/artists/" + params.searchTerm;
+            const allArtistsApiSearch = "https://yt-music-api.herokuapp.com/api/yt/artists/" + params.searchTerm
             const allArtistsResp = await fetch(allArtistsApiSearch)
             const allArtistsResult = await allArtistsResp.json()
-
+            
             for (let item of allArtistsResult.content) {
-                allArtistsList.push(item)
+                tempList.push(item)
 
             }
 
@@ -32,8 +32,8 @@ function Artists(props) {
         catch (e) {
             console.error(e)
         }
-        updateAllArtistsList(allArtistsList)
-        console.log(allArtistsList)
+        updateAllArtistsList(tempList)
+        
 
     }
     useEffect(() => {
