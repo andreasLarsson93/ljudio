@@ -58,8 +58,9 @@ function SinglePlayList(props) {
                 <h1>Single playlist</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
             </div>
             <Player videoId={value} browseId={fullPlayList} />
+            
             {singlePlayListSongs.map((playListSong, index) =>
-                <button value={playListSong.videoId} onClick={(e) => playThisSongInList(e.target)} key={index}>
+                <button className="play-song-button" value={playListSong.videoId} onClick={(e) => playThisSongInList(e.target)} key={index}>
                     {playListSong.name}
                 </button>
 

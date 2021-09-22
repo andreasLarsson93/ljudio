@@ -103,24 +103,21 @@ function Search() {
 
 
     return (
-        <div>
+        <div className="search-container">
         
-            <div className="search-container">
+            <div className="form-container">
                 <form onSubmit={event => event.preventDefault()}>
                     <input placeholder="search" onChange={event => updateSearchInput(event.target.value)} />
                     <button type="submit" onClick={searchMusic}>search</button>
                 </form>
-
             </div>
-            <div className="all-container" style={{ display: showResults ? 'flex' : 'none' }}>
-                <div className="direction-buttons-container">
-
+            <div className="direction-buttons-container" style={{ display: showResults ? 'flex' : 'none' }}>
+            
                     <button onClick={goToAllSongsComponent}>go to allSongs </button>
                     <button onClick={goToPlayListsComponent} >go to playlists</button>
                     <button onClick={goToArtistsComponent} >go to Artists</button>
                     <button onClick={copyLinkUrL}>copy</button>
 
-                </div>
                 <div>
                     <Songs songsArray={songsArray} playListsArray={playListsArray} albumsArray={albumsArray} artistsArray={artistsArray}/>
 

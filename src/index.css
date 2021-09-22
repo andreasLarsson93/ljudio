@@ -1,11 +1,21 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
 .all-container{
   display: flex;
  justify-content: space-between;
+ justify-content: center;
+ 
 }
- body{
+body{
   background-color: rgb(16, 16, 16);
   color: white;
-} 
+  display: flex;
+  justify-content: center;
+  
+}  
 button{
   border: none;
   outline: none;
@@ -13,6 +23,9 @@ button{
   border-radius: 5px;
   box-shadow: inset 3px 3px 5px rgba(255, 255, 255, .4);
   transition: all .1s;
+  margin:0.1% 0.5% ;
+  padding: 2px 10%;
+  flex-direction: column
 }
 button:hover{
   filter:brightness(120%)saturate(80%)
@@ -21,7 +34,18 @@ button:hover{
 button:active{
   background-color: red;
 }
-/* .copy-buton{
-  
 
-} */
+
+.play-song-button:focus{
+  font-size: 17px;
+  background-color: deeppink;
+}
+.first-page-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.buttons-container{
+  display: flex;
+  flex-direction: column;
+}

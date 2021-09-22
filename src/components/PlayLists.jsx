@@ -32,7 +32,7 @@ function PlayLists(props) {
         catch(e){
             console.error(e)
         }
-        console.log(tempList)
+       
         updatePlayListArray(tempList)
         
         
@@ -65,14 +65,15 @@ function PlayLists(props) {
 
             <h1>All playlists</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
             </div>
+            
+            <div className="all-container">
             {playListsArray.map((playList, index)=>
             <button value={playList.browseId} onClick={(e) => goToChosePlayList(e.target)} key={index}>
                         {playList.title}
             </button>
             )}
-            <div>
-            
             </div>
+          
         </div>
         
     )

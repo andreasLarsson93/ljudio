@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Player from "./Player";
 
 
@@ -8,8 +8,9 @@ function SingleSong(props) {
 
     let match = props.match
     let params = match.params
+   
 
-    console.log(params.searchTerm)
+   
 
 
     const playSong = (element) => {
@@ -24,13 +25,13 @@ function SingleSong(props) {
     return (
         <>
             <div className="title-copy">
-                <h1>Your song</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
-            </div>
-            <Player videoId={value} />
+                <h1>PRESS THE ANY BUTTON</h1>
             <div>
-
-                <button value={params.searchTerm} onClick={(e) => playSong(e.target)}>The "any" button</button>
+                <button className="play-song-button" value={params.searchTerm} onClick={(e) => playSong(e.target)}>The "any" button</button>
             </div>
+                <button className="play-song-button" className="copy-button" onClick={copyLinkUrL}>copy</button>
+            </div>
+            <Player videoId={value}/>
 
         </>
     )

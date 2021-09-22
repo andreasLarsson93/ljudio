@@ -31,35 +31,38 @@ function Songs(props) {
 
 
     return <>
-        <div>
+        <div className="first-page-container">
+
             <h2>Songs</h2>
             <h3>Listen to some samples</h3>
-            {props.songsArray.map(song => <p key={song.videoId}>
-                <button value={song.videoId} onClick={(e) => playMusic(e.target)}>{song.name}</button>
-            </p>)}
+            <div className="buttons-container">
+            {props.songsArray.map(song => <button key={song.videoId}
+                 className="play-song-button" value={song.videoId} onClick={(e) => playMusic(e.target)}>{song.name}
+                 </button>)}
 
-            <div>
+            </div>
             <Player videoId={value} browseId={playListValue} />
 
             <h2>Play Lists</h2>
             <h3>Listen to some play lists</h3>
-            {props.playListsArray.slice(0,3).map(playList => <button key={playList.browseId} 
+            <div className="buttons-container">
+            {props.playListsArray.slice(0,3).map(playList => <button className="play-song-button" key={playList.browseId} 
             value={playList.browseId} onClick={(e) => startPlayList(e.target)}>
 
                 {playList.title}
 
             </button>)}
                 </div>
-                <div>
                     <h2>Artists</h2>
+                <div className="buttons-container">
                     {props.artistsArray.slice(0,3).map(artist => <button key={artist.browseId}>
 
                 {artist.name}
 
             </button>)}
                 </div>
-                <div>
                     <h2>Albums</h2>
+                <div className="buttons-container">
                     {props.albumsArray.slice(0,3).map(album => <button key={album.browseId}>
 
                 {album.name}

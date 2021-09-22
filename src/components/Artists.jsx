@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -7,9 +8,10 @@ function Artists(props) {
 
 
     let match = props.match
-    console.log(match.params)
+    
     let params = match.params
-    console.log(match.params.searchTerm)
+   
+    const history = useHistory();
 
 
     const [allArtistsList, updateAllArtistsList] = useState([])
@@ -25,7 +27,6 @@ function Artists(props) {
 
             for (let item of allArtistsResult.content) {
                 tempList.push(item)
-
             }
 
         }
@@ -39,10 +40,23 @@ function Artists(props) {
     useEffect(() => {
         getAllArtists()
     }, [])
+    const goToThisArtist = (element) => {
+        let searchTerm = element.value
+        
+        history.push({
+            pathname: '/artist/' + searchTerm,
+            state: {
+                searchTerm: searchTerm,
+            }
+
+        })
+    }
 
     function copyLinkUrL() {
         navigator.clipboard.writeText(window.location.href)
     }
+   
+    
 
 
 
@@ -51,9 +65,10 @@ function Artists(props) {
 
             <h1>All artists</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
         </div>
-        <div>
 
-            {allArtistsList.map((artists, index) => <button key={index}>
+             <div className="all-container">
+
+            {allArtistsList.map((artists, index) => <button value={artists.browseId} key={index} onClick={(e) => goToThisArtist(e.target)}>
                 {artists.name}
             </button>)}
 

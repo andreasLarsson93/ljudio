@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Player from "./Player";
+
 import { useHistory } from "react-router-dom";
 
 
@@ -10,14 +10,10 @@ function AllSongs(props) {
 
     let match = props.match
     let params = match.params
-
-
     const history = useHistory();
-
 
     const [allSongsList, updateAllSongsList] = useState([])
    
-
     let tempList = []
     const getAllSongsList = async () => {
 
@@ -36,8 +32,8 @@ function AllSongs(props) {
         catch (e) {
             console.error(e)
         }
+        
         updateAllSongsList(tempList)
-
     }
     useEffect(() => {
         getAllSongsList()
@@ -66,14 +62,13 @@ function AllSongs(props) {
             <h1>All songs</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
         </div>
 
-        <div>
+            
+            <div className="all-container">
 
             {allSongsList.map((song, index) =>
                 <button value={song.videoId}  onClick={(e) => goToThisSong(e.target)} key={index}>
-                
                     {song.name}
                 </button>
-
             )}
             <div>
             </div>
