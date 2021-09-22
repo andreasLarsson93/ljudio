@@ -26,11 +26,10 @@ function SingleSong(props) {
         <>
             <div className="title-copy">
                 <h1>PRESS THE ANY BUTTON</h1>
-            <div>
-                <button className="play-song-button" value={params.searchTerm} onClick={(e) => playSong(e.target)}>The "any" button</button>
+                <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
+            
             </div>
-                <button className="play-song-button" className="copy-button" onClick={copyLinkUrL}>copy</button>
-            </div>
+                <button className="the-any-button" value={params.searchTerm} onClick={(e) => playSong(e.target)}>The "any" button</button>
             <Player videoId={value}/>
 
         </>

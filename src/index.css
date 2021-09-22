@@ -7,13 +7,27 @@
   display: flex;
  justify-content: space-between;
  justify-content: center;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ flex-direction: column;
  
 }
+.all-container>*{
+  height: 5vh;
+  text-align: center;
+
+}
 body{
-  background-color: rgb(16, 16, 16);
+  background-image: url("https://imgur.com/Pr3cWEc.gif");
   color: white;
   display: flex;
   justify-content: center;
+
+  
+}
+
+.go-to-buttons{
+  font-weight: 900;
   
 }  
 button{
@@ -25,7 +39,10 @@ button{
   transition: all .1s;
   margin:0.1% 0.5% ;
   padding: 2px 10%;
-  flex-direction: column
+  flex-direction: column;
+  font-weight: 900;
+  
+
 }
 button:hover{
   filter:brightness(120%)saturate(80%)
@@ -34,10 +51,12 @@ button:hover{
 button:active{
   background-color: red;
 }
-
-
+.player-buttons>*{
+  margin: 0;
+  width: 25%;
+}
 .play-song-button:focus{
-  font-size: 17px;
+
   background-color: deeppink;
 }
 .first-page-container{
@@ -48,4 +67,61 @@ button:active{
 .buttons-container{
   display: flex;
   flex-direction: column;
+}
+.form-container>*{
+  display: flex;
+}
+.single-artist-container{
+  position: absolute;
+  left: 0;
+}
+.title-share{
+  display: flex;
+  width: 10%;
+}
+.title-copy{
+  display: flex;
+  width: 130%;
+  margin-bottom: 2em  ;
+}
+.title-share>button{
+width: 2%;
+}
+.form-container>*>button{
+  height: 2vh;
+}
+.form-container>*>.fa-share-alt-square{
+  margin-top: -.25em;
+}
+.fa-share-alt-square{
+  
+  color: green;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow: none;
+  font-size: 2.0em;
+  padding: 0;
+  
+}
+.isPlaying{
+  background-color: deeppink;
+  font-weight: 900;
+  font-size: 1em  ;
+}
+.the-any-button{
+  font-weight: 900;
+  font-size: 2em;
+}
+.the-any-button:focus{
+  background-color: deeppink;
+}
+.play-playlist{
+  font-weight: 900;
+  font-size: 1em  ;
+}
+.artist-all-info>h1{
+  margin-top: 1%;
+}
+
+.img-div{
+  width: 100%;
 }

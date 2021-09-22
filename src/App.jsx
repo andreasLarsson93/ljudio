@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import AllSongs from './components/AllSongs';
 import Artists from './components/Artists';
+import Player from './components/Player';
 import PlayLists from './components/PlayLists';
 import Search from './components/Search';
 import SingleArtist from './components/SingleArtist';

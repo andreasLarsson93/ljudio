@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import Songs from "./Songs";
-import Artist from "./Artists";
-import Albums from "./Albums";
-import Player from "./Player";
-import PlayLists from "./PlayLists";
+
 import { useHistory } from "react-router-dom";
 
 
@@ -102,37 +99,30 @@ function Search() {
   
 
 
-    return (
+    return (<>
         <div className="search-container">
         
             <div className="form-container">
                 <form onSubmit={event => event.preventDefault()}>
                     <input placeholder="search" onChange={event => updateSearchInput(event.target.value)} />
                     <button type="submit" onClick={searchMusic}>search</button>
+                    <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
                 </form>
             </div>
-            <div className="direction-buttons-container" style={{ display: showResults ? 'flex' : 'none' }}>
-            
-                    <button onClick={goToAllSongsComponent}>go to allSongs </button>
-                    <button onClick={goToPlayListsComponent} >go to playlists</button>
-                    <button onClick={goToArtistsComponent} >go to Artists</button>
-                    <button onClick={copyLinkUrL}>copy</button>
+            <div style={{ display: showResults ? 'flex' : 'none' }}>
 
-                <div>
                     <Songs songsArray={songsArray} playListsArray={playListsArray} albumsArray={albumsArray} artistsArray={artistsArray}/>
-
-                </div>
-                <div>
-                  
-                </div>
-                
-
-
-           
-
             </div>
         </div>
+            <div className="direction-buttons-container" style={{ display: showResults ? 'flex' : 'none' }}>
+                    <button className="go-to-buttons" onClick={goToAllSongsComponent}>Go to AllSongs </button>
+                    <button className="go-to-buttons" onClick={goToPlayListsComponent} >Go to Playlists</button>
+                    <button className="go-to-buttons" onClick={goToArtistsComponent} >Go to Artists</button>
+            
 
+              
+            </div>
+        </>
     )
 
 

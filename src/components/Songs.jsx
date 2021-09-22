@@ -21,8 +21,19 @@ function Songs(props) {
         setPlayListValue(result)
        
     }
+    const changeClass=(target)=>{
+        if(document.querySelector(".isPlaying")){
+
+            document.querySelector(".isPlaying").className='play-playlist'
+        }
+        target.className="isPlaying"
+    }
 
     const playMusic = (element) => {
+        if(document.querySelector(".isPlaying")){
+
+            document.querySelector(".isPlaying").className='play-playlist'
+        }
         setValue(element.value)
         
     }
@@ -41,13 +52,12 @@ function Songs(props) {
                  </button>)}
 
             </div>
-            <Player videoId={value} browseId={playListValue} />
 
             <h2>Play Lists</h2>
             <h3>Listen to some play lists</h3>
             <div className="buttons-container">
-            {props.playListsArray.slice(0,3).map(playList => <button className="play-song-button" key={playList.browseId} 
-            value={playList.browseId} onClick={(e) => startPlayList(e.target)}>
+            {props.playListsArray.slice(0,3).map(playList => <button className="play-playlist" key={playList.browseId} 
+            value={playList.browseId} onClick={(e) => {startPlayList(e.target);changeClass(e.target)}}>
 
                 {playList.title}
 
@@ -69,6 +79,15 @@ function Songs(props) {
 
             </button>)}
                 </div>
+
+        <div>
+
+        <footer>
+                        
+            <Player videoId={value} browseId={playListValue} />
+        </footer>
+        </div>
+      
         </div>
     </>
 

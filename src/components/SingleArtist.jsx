@@ -26,7 +26,8 @@ function SingleArtist(props){
             const singleArtistApiSearch = "https://yt-music-api.herokuapp.com/api/yt/artist/" + params.searchTerm
             const singleArtistResp = await fetch(singleArtistApiSearch)
             const singleArtistResult = await singleArtistResp.json()
-          
+            
+            console.log(singleArtistResult.thumbnails)
             descripTempList.push(singleArtistResult.description)
             nameTempList.push(singleArtistResult.name)
 
@@ -76,15 +77,25 @@ function SingleArtist(props){
 
 
 
-    return(<>
-        <h1>{artistName}</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
-            <img src={artistImg}></img>
+    return(
+
+        <div className="single-artist-container">
+
+            <div className="title-share">
+
+        <h1>{artistName}</h1> <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
+            </div>
             <div>
+                <div className="img-div">
 
-       <div>
-           <div>
+            <img src={artistImg}></img>
+                </div>
 
-           <h2>Albums</h2>
+       <div className="artist-all-info">
+          
+
+           <h1>Albums</h1>
+
            <ul>
       {artistAlbums.map((album, index) =>
                 <li  key={index}>
@@ -92,10 +103,10 @@ function SingleArtist(props){
                 </li>
             )} 
             </ul>
-            </div>
-           <div>
+            
+           
+           <h1>Songs</h1>
 
-           <h2>Songs</h2>
            <ul>
       {artistSongs.map((song, index) =>
                 <li  key={index}>
@@ -103,15 +114,15 @@ function SingleArtist(props){
                 </li>
             )} 
             </ul>
-            </div>
-        <h2>Artist Information</h2>
+            
+        <h1>Artist Information</h1>
         <p>
              {artistDescription[0]}
             </p>
             </div>
        </div>
 
-        </>
+       </div>
     )
 }
 

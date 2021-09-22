@@ -63,9 +63,9 @@ function PlayLists(props) {
         <div>
             <div className="title-copy">
 
-            <h1>All playlists</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
+            <h1>All playlists</h1> <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
             </div>
-            
+
             <div className="all-container">
             {playListsArray.map((playList, index)=>
             <button value={playList.browseId} onClick={(e) => goToChosePlayList(e.target)} key={index}>

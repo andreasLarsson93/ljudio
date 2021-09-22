@@ -63,7 +63,7 @@ function Artists(props) {
     return (<>
         <div className="title-copy">
 
-            <h1>All artists</h1> <button className="copy-button" onClick={copyLinkUrL}>copy</button>
+            <h1>All artists</h1> <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
         </div>
 
              <div className="all-container">
