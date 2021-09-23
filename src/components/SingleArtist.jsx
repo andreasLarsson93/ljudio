@@ -78,13 +78,22 @@ function SingleArtist(props) {
 
                 <h1>{artistName}</h1> <button className="fa fa-share-alt-square" onClick={copyLinkUrL}></button>
             </div>
-            <div>
+           
 
                 <div className="img-div">
                     <img src={artistImg}></img>
                 </div>
 
-                <div className="artist-all-info">
+                        <div className="artist-all-info">
+                    <h1>Songs</h1>
+                    <ul>
+                        {artistSongs.map((song, index) =>
+                            <li key={index}>
+                                {song.name}
+                            </li>
+                        )}
+                    </ul>
+                    
                     <h1>Albums</h1>
                     <ul>
                         {artistAlbums.map((album, index) =>
@@ -94,21 +103,13 @@ function SingleArtist(props) {
                         )}
                     </ul>
 
-                    <h1>Songs</h1>
-                    <ul>
-                        {artistSongs.map((song, index) =>
-                            <li key={index}>
-                                {song.name}
-                            </li>
-                        )}
-                    </ul>
 
                     <h1>Artist Information</h1>
                     <p>
                         {artistDescription[0]}
                     </p>
                 </div>
-            </div>
+           
 
         </div>
     )

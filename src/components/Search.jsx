@@ -15,7 +15,6 @@ function Search() {
     
     const history = useHistory();
 
-  
     const searchMusic = async () => {
         //All search
         const apiSearch = "https://yt-music-api.herokuapp.com/api/yt/search/" + searchInput;
@@ -26,18 +25,15 @@ function Search() {
         const playListResp = await fetch(playListApiSearch)
         const playListResults = await playListResp.json()
 
-
         let songsArray = []
         let artistsArray = []
         let albumsArray = []
         let playListsArray = []
 
-
         for (let playList of playListResults.content) {
             playListsArray.push(playList)
 
         }
-
 
         for (let item of results.content) {
             if (item.type == 'song') {
@@ -50,7 +46,6 @@ function Search() {
             if (item.type == 'album') {
                 albumsArray.push(item)
             }
-
 
         }
         updateSongsArray(songsArray)
@@ -96,8 +91,6 @@ function Search() {
         navigator.clipboard.writeText(window.location.href)
     }
     
-  
-
 
     return (<>
         <div className="search-container">
@@ -118,14 +111,10 @@ function Search() {
                     <button className="go-to-buttons" onClick={goToAllSongsComponent}>Go to AllSongs </button>
                     <button className="go-to-buttons" onClick={goToPlayListsComponent} >Go to Playlists</button>
                     <button className="go-to-buttons" onClick={goToArtistsComponent} >Go to Artists</button>
-            
-
-              
+             
             </div>
         </>
     )
-
-
 
 }
 

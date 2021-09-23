@@ -37,9 +37,6 @@ function Songs(props) {
         setValue(element.value)
         
     }
-   
-  
-
 
     return <>
         <div className="first-page-container">

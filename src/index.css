@@ -78,7 +78,11 @@ button:active{
 .single-artist-container{
   position: absolute;
   left: 0;
+  width: 80vh;
 
+}
+.artist-all-info{
+  width: 100%;
 }
 .title-share{
   display: flex;
@@ -133,4 +137,14 @@ width: 2%;
 .artist-all-info>h1{
   margin-top: 1%;
 
+}
+.single-artist-container>.img-div{
+width: 80vh;
+
+ 
+
+}
+img{
+  object-fit: cover;
+  width: 100%;
 }
