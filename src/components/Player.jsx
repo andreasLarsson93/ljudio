@@ -10,17 +10,13 @@ class Player extends React.Component {
   }
   onReady(event) {
     playState = event
+
     playState.target.playVideo()
   }
-  onPlayListReady(event){
-    playState = event
-    playState.target.loadPlayList()
-  }
-  
+   
   render() {
    
     
-
     const opts = {
       height: '0',
       width: '0',
@@ -30,25 +26,26 @@ class Player extends React.Component {
         list:this.props.browseId
 
       },
-      
     };
    
     return (
       <div>
 
         <Youtube videoId={this.props.videoId} opts={opts} onReady={this.onReady}/>
-        <div className="PlayerButtons">
-        </div>
         <div>
 
-       <Youtube onReady={this.onPlayListReady} opts={opts}/> 
-        <button onClick={() => {playState.target.previousVideo()}}>previous</button>
-        <button onClick={() => {playState.target.pauseVideo()}}>paus</button>
-        <button onClick={() => {playState.target.playVideo()}}>play</button>
-        <button onClick={() => {playState.target.nextVideo()}}>next</button>
-        
         </div>
 
+      <footer>
+
+    
+        <div className="player-buttons">
+        <button className="fa fa-fast-backward"  onClick={() => {playState.target.previousVideo()}}></button>
+        <button className="fa fa-pause" onClick={() => {playState.target.pauseVideo()}}></button>
+        <button className="fa fa-play" onClick={() => {playState.target.playVideo()}}></button>
+        <button className="fa fa-fast-forward" onClick={() => {playState.target.nextVideo()}}></button>
+        </div>    
+      </footer>
       </div>
 
 
